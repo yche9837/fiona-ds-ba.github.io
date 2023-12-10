@@ -64,13 +64,21 @@
 - Integrated explanations, code, visualisations, and results in a professional Jupyter Notebook.
 - Project achieved a high distinction.
 
-### Agile Software Development | University of Sydney (2023)
-- Led and collaborated with a team of 4 through the entire software development life cycle (SDLC) of two Agile projects.
+### Agile Scrum Software Development | University of Sydney (2023)
+- Led and collaborated with a team of 4 through the entire software development life cycle (SDLC) of two Agile projects using Java.
 - Developed order and scroll management systems using Agile methodologies, including Kanban and Scrum.
 - Took on the role of Scrum Master and Developer in the Scrum project, as well as providing additional support to the Product Owner.
+- Utilised Jira to track the project, Git and GitHub to manage the version of the source code, build automation tools such as Gradle, continuous integration tool Jenkins, testing tool JUnit, code coverage tool JaCoCo, and webhooks Ngrok to automate the development process.
 - Documented the entire SDLC process, including the planning, development, testing, and deployment stages, in a professional report.
 - Served as the primary presenter for the final presentation, which was well-received by the client.
 - Both agile projects achieved a distinction.
+
+### Spatial Analysis of the liveability of Sydney | University of Sydney (2022)
+- Led a team of 3 to investigate the liveability of SA2 regions in Sydney using Python and SQL.
+- Performed data cleaning, EDA, table creation, indexing, calculation of metrics for different liveability dimensions as per the specifications, and visualisation of the results standardised metrics using postgis.
+- Delegated tasks to team members and ensured the project was completed on time.
+- Served as the primary presenter for the final presentation.
+- Project achieved a high distinction.
 
 ## Extracurricular / Volunteering
 ### Volunteer | The Forbidden City Concert Hall (2018)
