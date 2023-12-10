@@ -48,6 +48,29 @@
 - Our efforts led to a comprehensive funding strategy for FreedomForHumanity, enhancing their ability to secure necessary resources for their operations
 
 ## Projects
+### Data-Driven Predictive Model for Wine Expenditure | University of Sydney (2023)
+- Performed data cleaning, exploratory data analysis (EDA), and feature engineering on a dataset of 2240 observations and 28 variables.
+- Modelled using Linear Regression, KNN Model and Random Forest, with hyperparameter tuning if possible.
+- Selected the best model (evaluated by MAE) in predicting the money spent on Wine products in the last two years for a given customer using Python.
+- Performed additional fairness analysis using metrics such as statistical parity and disparate impact to address potential bias in the model.
+- Documented findings, limitations, and recommendations in a professional report in both academic and business contexts.
+- Project achieved a high distinction.
+
+### Time Series Analysis of the Solar Power Production | University of Sydney (2023)
+- Used Python to perform EDA that identified trends and seasonality in the dataset.
+- Selected models based on the results of the EDA to forecast the solar power in half-hourly interval, daily, and monthly time series to predict the solar power production in the next 24 hours, 7 days, and 12 months.
+- Aggregated time series data to daily and monthly level from half-hourly interval data.
+- Evaluated the performance of the selected models, including random walk, seasonal random walk, Holt-Winter's exponential smoothing with additive and multiplicative seasonality, Damped holt exponential smoothing, and ARIMA models, using MAE.
+- Integrated explanations, code, visualisations, and results in a professional Jupyter Notebook.
+- Project achieved a high distinction.
+
+### Agile Software Development | University of Sydney (2023)
+- Led and collaborated with a team of 4 through the entire software development life cycle (SDLC) of two Agile projects.
+- Developed order and scroll management systems using Agile methodologies, including Kanban and Scrum.
+- Took on the role of Scrum Master and Developer in the Scrum project, as well as providing additional support to the Product Owner.
+- Documented the entire SDLC process, including the planning, development, testing, and deployment stages, in a professional report.
+- Served as the primary presenter for the final presentation, which was well-received by the client.
+- Both agile projects achieved a distinction.
 
 ## Extracurricular / Volunteering
 ### Volunteer | The Forbidden City Concert Hall (2018)
