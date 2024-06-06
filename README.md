@@ -1,4 +1,4 @@
-# CV
+![image](https://github.com/yche9837/fiona-ds-ba.github.io/assets/79457690/fab41778-3d8f-490c-9d81-b16ac3e5898e)# CV
 
 ## Skills
 - Proficient in Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)
@@ -20,12 +20,24 @@
 - Rank 1st in EAL/D and Economics at school
 
 ## School Commitments / Work Experience
+**Dyson Expert | Dyson Appliances (Aust.) Pty Limited (June 2024 – Present)**
+- Conducted product demonstrations and utilised the 4E’s How to Sell framework to interact with customers and achieve sales targets
+- Maintained high standards of visual merchandising and stock levels
+- Built strong relationships with store management and staff to drive customer referrals
+
 **Academic Tutor | self-employed & OLA Tutoring & Art of Smart Education (Nov.2020 - present)**
 - Provided one-on-one academic support to Y11/12 Economics, EAL/D, Biology and Math Adv and Ext1 students, resulting in students achieving top 10 internal rankings and high band 5/6 scores on the HSC
 - Created PowerPoint materials to help students understand concepts visually
 - Communicated with parents regarding students’ progress
 - Mentored students during critical examination period
 - Nominated for the Student Success [Secondary] and Coach of the Year Awards [1-on-1 Tutoring].
+
+**Capstone Project Presentation to BIGW Executives (June 2024)**
+[Link to the project](https://github.com/yche9837/Portfolio/tree/main/%20Predictive%20Model%20for%20Wine%20Expenditure)
+- Chosen as one of the top two groups to present to BIGW corporate partners.
+- Developed innovative bundle strategy aimed at increasing BIGW's sales units.
+- Utilised the CRISP-DM approach for structured and data-driven decision-making.
+- Delivered a polished presentation to corporate executives, showcasing advanced problem-solving and communication skills.
 
 **STEM Industry Challenge | Practera (June - Aug.2023)**
 - Collaborated with a diverse team of 7 to address Resteel Recycling's business challenge of sourcing industrial scrap from larger clients
