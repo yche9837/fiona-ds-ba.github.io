@@ -33,7 +33,6 @@
 - Nominated for the Student Success [Secondary] and Coach of the Year Awards [1-on-1 Tutoring].
 
 **Capstone Project Presentation to BIGW Executives (June 2024)**
-[Link to the project](https://github.com/yche9837/Portfolio/tree/main/%20Predictive%20Model%20for%20Wine%20Expenditure)
 - Chosen as one of the top two groups to present to BIGW corporate partners.
 - Developed innovative bundle strategy aimed at increasing BIGW's sales units.
 - Utilised the CRISP-DM approach for structured and data-driven decision-making.
@@ -60,6 +59,16 @@
 - Our efforts led to a comprehensive funding strategy for FreedomForHumanity, enhancing their ability to secure necessary resources for their operations
 
 ## Projects
+### Capstone Project: CRISP-DM Approach to Boost BIGW Sales Units with Bundling | University of Sydney & BIGW (2024)
+[Link to the project](https://github.com/yche9837/Portfolio/tree/main/%20Predictive%20Model%20for%20Wine%20Expenditure)
+- Tackled the issue of increased price sensitivity among BIGW’s core customers due to rising economic pressures.
+- Conducted extensive EDA to identify key variables and trends influencing sales.
+- Utilised the CRISP-DM methodology, employing machine learning models like Linear Regression, Ridge, and Random Forest, with Random Forest yielding the best performance.
+- Developed an innovative bundle strategy to pair high-demand products with underperforming ones, leveraging price elasticity and seasonality insights.
+- Implemented PCA for dimensionality reduction, handling multicollinearity, and optimized Random Forest hyperparameters to predict sales units accurately.
+- Evaluated the model using RMSE and MAE, created bundles, and forecasted sales increase and profit boost.
+- Delivered a professional presentation to BIGW executives, highlighting data-driven insights and strategic recommendations for enhancing sales and profitability through bundling.
+
 ### Data-Driven Predictive Model for Wine Expenditure | University of Sydney (2023)
 [Link to the project](https://github.com/yche9837/Portfolio/tree/main/%20Predictive%20Model%20for%20Wine%20Expenditure)
 - Performed data cleaning, exploratory data analysis (EDA), and feature engineering on a dataset of 2240 observations and 28 variables.
