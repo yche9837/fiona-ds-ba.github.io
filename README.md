@@ -60,7 +60,7 @@
 
 ## Projects
 ### Capstone Project: CRISP-DM Approach to Boost BIGW Sales Units with Bundling | University of Sydney & BIGW (2024)
-[Link to the project](https://github.com/yche9837/Portfolio/tree/main/%20Predictive%20Model%20for%20Wine%20Expenditure)
+(Project is confidential, therefore link for the project is unavailable)
 - Tackled the issue of increased price sensitivity among BIGW’s core customers due to rising economic pressures.
 - Conducted extensive EDA to identify key variables and trends influencing sales.
 - Utilised the CRISP-DM methodology, employing machine learning models like Linear Regression, Ridge, and Random Forest, with Random Forest yielding the best performance.
