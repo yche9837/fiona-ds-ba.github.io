@@ -1,4 +1,4 @@
-![image](https://github.com/yche9837/fiona-ds-ba.github.io/assets/79457690/fab41778-3d8f-490c-9d81-b16ac3e5898e)# CV
+# CV
 
 ## Skills
 - Proficient in Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)
