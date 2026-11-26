@@ -136,8 +136,20 @@
   @media (max-width: 820px) {
     .site-head nav ul { gap: 1rem; }
     .site-head nav li.hide-sm { display: none; }
-    .hero { grid-template-columns: 1fr; padding-top: 3.5rem; padding-bottom: 3rem; gap: 1.5rem; }
-  </style>
+    .hero { padding-top: 3.5rem; padding-bottom: 3rem; }
+    .facts dl { grid-template-columns: 1fr 1fr; }
+    .facts dl > div, .facts dl > div + div { padding: 1.1rem 1rem 1.1rem 0; border-left: 0; }
+    .facts dl > div:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--rule); }
+    .facts dl > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+    .project, .timeline li { grid-template-columns: 1fr; gap: .5rem; }
+    .project.featured .body { padding: 1.25rem; }
+    .two-col, .contact .wrap { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  @media print {
+    .site-head nav, .actions, .contact .actions { display: none; }
+    body { background: #fff; }
+  }
+</style>
 </head>
 <body>
 <a class="skip" href="#work">Skip to projects</a>
