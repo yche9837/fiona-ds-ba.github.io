@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiona Chen | Data Science Portfolio</title>
+<meta name="description" content="Case studies by Fiona (Yi Fei) Chen, Master of Data Science student at the University of Sydney: data pipelines, machine learning, forecasting and spatial SQL.">
+<meta property="og:title" content="Fiona Chen | Data Science Portfolio">
+<meta property="og:description" content="Case studies in data pipelines, machine learning, forecasting and spatial SQL.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --tint: #F3F5F8;
+    --ink: #1A1F2B;
+    --muted: #5B6372;
+    --rule: #E1E5EB;
+    --accent: #1F5F8B;
+    --accent-ink: #174A6D;
+    --neutral-mark: #B9C1CC;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Source Sans 3", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.125rem/1.6 var(--sans); font-variant-numeric: tabular-nums; }
+  a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--accent-ink); text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .5rem 1rem; z-index: 20; }
+  .skip:focus { left: 1rem; top: 1rem; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
+
+  .site-head { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.95); border-bottom: 1px solid var(--rule); }
+  .site-head .wrap { display: flex; align-items: center; justify-content: space-between; height: 3.75rem; }
+  .name { font-weight: 700; color: var(--ink); text-decoration: none; }
+  .site-head ul { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+  .site-head ul a { color: var(--muted); text-decoration: none; font-size: 1rem; }
+  .site-head ul a:hover { color: var(--ink); }
+
+  .opening { padding-top: 6rem; padding-bottom: 4rem; }
+  .opening h1 {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+    line-height: 1.14; letter-spacing: -.015em; margin: 0; max-width: 17em;
+  }
+  .opening .who { margin: 2rem 0 0; max-width: 40em; color: var(--muted); font-size: 1.2rem; }
+  .opening .who b { color: var(--ink); font-weight: 600; }
+  .links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0 0; font-weight: 600; }
+
+  .contents { padding-bottom: 5rem; }
+  .contents table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  .contents caption { text-align: left; font-family: var(--serif); font-size: 1.5rem; padding-bottom: 1rem; }
+  .contents th { text-align: left; font-weight: 600; color: var(--muted); font-size: .92rem; padding: .6rem 1rem .6rem 0; border-bottom: 1px solid var(--ink); }
+  .contents td { padding: .9rem 1rem .9rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .contents td:first-child { width: 4rem; color: var(--muted); }
+  .contents td:nth-child(2) a { font-weight: 600; color: var(--ink); text-decoration: none; }
+  .contents td:nth-child(2) a:hover { color: var(--accent); text-decoration: underline; }
+  .contents td:last-child { color: var(--muted); }
+
+  .case { border-top: 1px solid var(--rule); padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .case.alt { background: var(--tint); }
+  .case .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: start; }
+  .case h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3vw, 2.25rem); line-height: 1.2; letter-spacing: -.01em; margin: 0 0 .5rem; }
+  .case .meta { color: var(--muted); font-size: 1rem; margin: 0 0 2rem; }
+  .case h3 { font-size: 1rem; font-weight: 700; margin: 1.75rem 0 .35rem; }
+  .case p { margin: 0 0 .75rem; max-width: 36em; }
+  .case .lead { font-family: var(--serif); font-size: 1.3rem; line-height: 1.45; }
+  .case .tools { color: var(--muted); font-size: 1rem; margin-top: 1.75rem; }
+  .case .code { font-size: 1rem; }
+  .case figure { margin: 0; position: sticky; top: 5.5rem; }
+  .case figcaption { font-size: .95rem; color: var(--muted); margin-top: .9rem; max-width: 34em; }
+  .fig-title { font-weight: 700; font-size: 1.05rem; margin: 0 0 .25rem; }
+  .fig-sub { color: var(--muted); font-size: .95rem; margin: 0 0 1.25rem; }
+
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  svg text { font-family: var(--sans); fill: var(--ink); }
+  svg .lbl { font-size: 14px; }
+  svg .val { font-size: 14px; font-weight: 700; }
+  svg .muted { fill: var(--muted); }
+  svg .bar { fill: var(--neutral-mark); }
+  svg .bar.hi { fill: var(--accent); }
+  svg .axis { stroke: var(--muted); stroke-width: 1; }
+  svg .grid { stroke: var(--rule); stroke-width: 1; }
+  svg .hit:hover .bar { opacity: .82; }
+
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps li { position: relative; padding: 0 0 1.4rem 2.75rem; }
+  .steps li::before {
+    counter-increment: s; content: counter(s); position: absolute; left: 0; top: .15rem;
+    width: 1.75rem; height: 1.75rem; border-radius: 50%; border: 1.5px solid var(--accent);
+    color: var(--accent); font-weight: 700; font-size: .9rem; display: grid; place-items: center; background: var(--bg);
+  }
+  .steps li:not(:last-child)::after { content: ""; position: absolute; left: .82rem; top: 2.1rem; bottom: .2rem; width: 1.5px; background: var(--rule); }
+  .steps b { display: block; font-size: 1.45rem; font-weight: 600; font-family: var(--serif); line-height: 1.25; }
+  .steps span { color: var(--muted); font-size: 1rem; }
+
+  .formula { background: var(--bg); border: 1px solid var(--rule); padding: 1.5rem 1.75rem; font-family: var(--serif); font-size: 1.15rem; line-height: 2; }
+  .formula .op { color: var(--muted); }
+  .formula .neg { color: #9B2C2C; }
+  .formula .add { color: var(--accent); font-weight: 600; }
+
+  .htable { width: 100%; border-collapse: collapse; font-size: 1rem; background: var(--bg); }
+  .htable th, .htable td { text-align: left; padding: .75rem .9rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .htable th { color: var(--muted); font-weight: 600; font-size: .92rem; border-bottom-color: var(--ink); }
+  .htable td:first-child { font-weight: 600; white-space: nowrap; }
+
+  section.plain { padding-top: 5rem; padding-bottom: 2rem; border-top: 1px solid var(--rule); }
+  section.plain h2 { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 2rem; }
+  .jobs { list-style: none; margin: 0; padding: 0; }
+  .jobs li { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 2rem; padding: 1.25rem 0; border-top: 1px solid var(--rule); }
+  .jobs .when { color: var(--muted); font-size: 1rem; }
+  .jobs h3 { margin: 0; font-size: 1.1rem; }
+  .jobs .org { margin: 0 0 .35rem; color: var(--muted); }
+  .jobs p { margin: 0; max-width: 40em; }
+  .about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 4rem; }
+  .about p { margin: 0 0 1rem; max-width: 36em; }
+  .facts { margin: 0; }
+  .facts div { padding: .8rem 0; border-top: 1px solid var(--rule); }
+  .facts dt { font-weight: 600; }
+  .facts dd { margin: 0; color: var(--muted); }
+
+  .site-foot { margin-top: 4rem; background: var(--ink); color: #C9D0DA; }
+  .site-foot .wrap { padding-top: 3.5rem; padding-bottom: 3.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; align-items: end; }
+  .site-foot h2 { font-family: var(--serif); font-weight: 400; color: #fff; font-size: 1.9rem; margin: 0 0 .5rem; max-width: 18em; line-height: 1.25; }
+  .site-foot p { margin: 0; }
+  .site-foot a { color: #fff; }
+  .site-foot :focus-visible { outline-color: #9CC3E0; }
+
+  @media (max-width: 880px) {
+    .wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .site-head ul { gap: 1rem; }
+    .site-head li.opt { display: none; }
+    .opening { padding-top: 3.5rem; padding-bottom: 3rem; }
+    .case .grid, .about { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+    .case figure { position: static; }
+    .jobs li { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
+    .contents th:nth-child(3), .contents td:nth-child(3) { display: none; }
+    .case { padding-top: 3rem; padding-bottom: 3rem; }
+  }
+  @media print {
+    .site-head, .skip { display: none; }
+    .case { break-inside: avoid; background: none; }
+    .case figure { position: static; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to case studies</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="name" href="#top">Fiona Chen</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li class="opt"><a href="#experience">Experience</a></li>
+        <li class="opt"><a href="#about">About</a></li>
+        <li><a href="Fiona_Chen_Resume.pdf">Resume</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap opening">
+    <h1>Fiona (Yi Fei) Chen</h1>
+    <p class="who">Master of Data Science student at the University of Sydney, currently working in banking at Commonwealth Bank. Selected case studies in data pipelines, machine learning, forecasting and spatial SQL.</p>
+    <p class="links">
+      <a href="mailto:fionachen0811@gmail.com">fionachen0811@gmail.com</a>
+      <a href="Fiona_Chen_Resume.pdf">Resume (PDF)</a>
+      <a href="https://github.com/yche9837/Portfolio">GitHub</a>
+    </p>
+  </div>
+
+  <div class="wrap contents" id="work">
+    <table>
+      <caption>Case studies</caption>
+      <thead><tr><th scope="col">Year</th><th scope="col">Project</th><th scope="col">The question</th><th scope="col">Result</th></tr></thead>
+      <tbody>
+        <tr><td>2026</td><td><a href="#hotel">Hotel booking cancellations</a></td><td>Which bookings should staff follow up before arrival?</td><td>Mark 19.22/20</td></tr>
+        <tr><td>2025</td><td><a href="#classification">Rice and image classification</a></td><td>When does feature engineering beat a neural network?</td><td>Full marks in both</td></tr>
+        <tr><td>2024</td><td><a href="#bigw">BIGW product bundling</a></td><td>How can bundles lift sales for price-sensitive shoppers?</td><td>Top two groups, presented to executives</td></tr>
+        <tr><td>2023</td><td><a href="#forecasting">Solar forecasting and spending prediction</a></td><td>How should a forecast change with the time horizon?</td><td>High Distinction in both</td></tr>
+        <tr><td>2022</td><td><a href="#liveability">Liveability of Sydney</a></td><td>How liveable is each part of Sydney, measured from public data?</td><td>High Distinction, team lead</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="case" id="hotel" aria-labelledby="hotel-h">
+    <div class="wrap grid">
+      <div>
+        <h2 id="hotel-h">Hotel booking cancellations</h2>
+        <p class="meta">COMP5310, University of Sydney, 2026. Pair assignment, mark 19.22/20.</p>
+        <p class="lead">More than a quarter of bookings in the data ended in a cancellation or a no-show. A late cancellation leaves a room empty that could have been resold.</p>
+        <h3>Approach</h3>
+        <p>We built the data pipeline and models in Python. Before training any model, we tested whether missing values were linked to cancellation, rather than dropping or filling them by habit. Missing country, for example, marked a very different group of bookings, so it became its own category.</p>
+        <p>Every field only known after the outcome, such as the final reservation status and the assigned room, was removed. Feature selection ran inside each cross-validation fold, so the scores were never flattered by information from the validation data.</p>
+        <h3>Findings</h3>
+        <p>A tuned random forest clearly beat logistic regression and both baselines. It still missed most short-notice cancellations, and it did worse when trained on earlier arrivals and tested on a later year. So the recommendation was a staff follow-up pilot, used for decision support and never for automatic changes to reservations.</p>
+        <h3>Next steps</h3>
+        <p>Set the follow-up threshold from the real cost of a wasted call against an empty room, calibrate the scores so staff can read them as probabilities, and monitor performance month by month.</p>
+        <p class="tools">Python, pandas, scikit-learn, chi-squared tests</p>
+        <p class="code">Coursework repository is private. Code and report available on request.</p>
+      </div>
+      <figure aria-labelledby="hotel-fig">
+        <p class="fig-title" id="hotel-fig">From raw export to one honest test</p>
+        <p class="fig-sub">The split and validation plan were fixed before any model was trained.</p>
+        <ol class="steps">
+          <li><b>119,987 bookings</b><span>Raw export with 32 columns, for arrivals from 2015 to 2017</span></li>
+          <li><b>87,114 bookings</b><span>After removing duplicates, invalid records and fields that leak the outcome</span></li>
+          <li><b>27 of 64 features</b><span>Selected inside each fold of stratified 10-fold cross-validation</span></li>
+          <li><b>17,423 bookings</b><span>Held-out test set, evaluated once at the end</span></li>
+        </ol>
+      </figure>
+    </div>
+  </section>
+
+  <section class="case alt" id="classification" aria-labelledby="cls-h">
+    <div class="wrap grid">
+      <div>
+        <h2 id="cls-h">Rice and image classification</h2>
+        <p class="meta">COMP4318, University of Sydney, 2025. Two pair assignments, full marks in both.</p>
+        <p class="lead">Eight hand-built features beat a tuned convolutional neural network on small images. The same random forest on raw pixels did far worse.</p>
+        <h3>Approach</h3>
+        <p>For 40,000 images across 9 classes, we converted the images to greyscale and engineered eight features per image, including pixel statistics and edge density. We compared a random forest on those features with a random forest on raw pixels, an MLP and a CNN, the last two tuned with Keras Tuner.</p>
+        <p>In an earlier assignment, we compared nine classifiers on a rice dataset using stratified 10-fold cross-validation and grid search.</p>
+        <h3>Findings</h3>
+        <p>On 28×28 images, good features mattered more than model complexity. On the rice data, all nine models landed within three points of each other in cross-validation, so careful validation mattered more than the choice of model. The tuned random forest reached 93.7% on the test set.</p>
+        <h3>Next steps</h3>
+        <p>Try data augmentation and a pretrained network for the images, and study which classes are confused with each other before adding complexity.</p>
+        <p class="tools">Python, scikit-learn, TensorFlow, Keras Tuner, OpenCV</p>
+        <p class="code">Coursework repositories are private. Available on request.</p>
+      </div>
+      <figure aria-labelledby="cls-fig">
+        <p class="fig-title" id="cls-fig">Test accuracy on 8,000 held-out images</p>
+        <p class="fig-sub">Random forest on engineered features compared with the alternatives</p>
+        <svg viewBox="0 0 460 214" role="img" aria-label="Test accuracy: random forest on eight engineered features 72.3%, tuned CNN 62.9%, random forest on raw pixels 51.9%, tuned MLP 45.3%.">
+          <line class="grid" x1="292" y1="10" x2="292" y2="194"/>
+          <line class="grid" x1="394" y1="10" x2="394" y2="194"/>
+          <line class="axis" x1="190" y1="10" x2="190" y2="194"/>
+          <text class="lbl muted" x="190" y="212" text-anchor="middle">0%</text>
+          <text class="lbl muted" x="292" y="212" text-anchor="middle">40%</text>
+          <text class="lbl muted" x="394" y="212" text-anchor="middle">80%</text>
+          <g class="hit"><title>Random forest on 8 engineered features: 72.3%</title>
+            <text class="lbl" x="180" y="36" text-anchor="end">Random forest, 8 features</text>
+            <rect class="bar hi" x="190" y="18" width="184.4" height="26" rx="4"/>
+            <text class="val" x="381" y="36">72.3%</text></g>
+          <g class="hit"><title>CNN tuned with Keras Tuner: 62.9%</title>
+            <text class="lbl" x="180" y="82" text-anchor="end">CNN, tuned</text>
+            <rect class="bar" x="190" y="64" width="160.4" height="26" rx="4"/>
+            <text class="val" x="357" y="82">62.9%</text></g>
+          <g class="hit"><title>Random forest on raw pixels: 51.9%</title>
+            <text class="lbl" x="180" y="128" text-anchor="end">Random forest, raw pixels</text>
+            <rect class="bar" x="190" y="110" width="132.3" height="26" rx="4"/>
+            <text class="val" x="329" y="128">51.9%</text></g>
+          <g class="hit"><title>MLP tuned with Keras Tuner: 45.3%</title>
+            <text class="lbl" x="180" y="174" text-anchor="end">MLP, tuned</text>
+            <rect class="bar" x="190" y="156" width="115.5" height="26" rx="4"/>
+            <text class="val" x="312" y="174">45.3%</text></g>
+        </svg>
+        <figcaption>All four models used the same training and test split. The gap between the two random forests shows the gain came from the features, not the algorithm.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="case" id="bigw" aria-labelledby="bigw-h">
+    <div class="wrap grid">
+      <div>
+        <h2 id="bigw-h">BIGW product bundling</h2>
+        <p class="meta">Capstone project with BIGW, 2024. Group project, selected as one of the top two groups to present to BIGW executives.</p>
+        <p class="lead">BIGW's core customers were becoming more price-sensitive under economic pressure. The question was how to lift sales units without simply cutting prices.</p>
+        <h3>Approach</h3>
+        <p>Working through CRISP-DM, our team explored what drives sales units, then paired high-demand products with underperforming ones using price elasticity and seasonality. We compared linear regression, ridge and random forest models, with PCA to deal with highly correlated predictors.</p>
+        <h3>Findings</h3>
+        <p>The random forest predicted sales units best, which let us forecast the sales and profit uplift from the proposed bundles and present the case to BIGW executives.</p>
+        <h3>Next steps</h3>
+        <p>Trial the strongest bundles in a subset of stores against matched control stores, so the uplift is measured rather than only forecast.</p>
+        <p class="tools">Python, scikit-learn, CRISP-DM</p>
+        <p class="code">Confidential client project, so no code is published.</p>
+      </div>
+      <figure aria-labelledby="bigw-fig">
+        <p class="fig-title" id="bigw-fig">How a bundle recommendation was built</p>
+        <p class="fig-sub">The reasoning behind each proposed bundle</p>
+        <ol class="steps">
+          <li><b>Start with demand</b><span>A high-demand product that customers already come in for</span></li>
+          <li><b>Add an underperformer</b><span>A product with weaker sales that the bundle can lift</span></li>
+          <li><b>Check price and timing</b><span>Use price elasticity and seasonality to judge how shoppers will respond</span></li>
+          <li><b>Forecast the uplift</b><span>Predict sales units and profit with the bundle in place</span></li>
+        </ol>
+      </figure>
+    </div>
+  </section>
+
+  <section class="case alt" id="forecasting" aria-labelledby="fc-h">
+    <div class="wrap grid">
+      <div>
+        <h2 id="fc-h">Solar forecasting and spending prediction</h2>
+        <p class="meta">QBUS2820, University of Sydney, 2023. Two individual assignments, High Distinction in both.</p>
+        <p class="lead">A forecast that works for the next hour can fail for next month. Each horizon needed its own aggregation, model selection and evaluation.</p>
+        <h3>Approach</h3>
+        <p>I aggregated half-hourly household solar data to daily and monthly series, studied trend and seasonality at each level, and compared benchmarks such as the seasonal random walk with Holt-Winters, damped Holt and ARIMA models, using time-ordered training, validation and test splits. I produced interval forecasts as well as point forecasts.</p>
+        <p>In a second project, I predicted customer spending on wine from 28 marketing variables and audited the final model for fairness using statistical parity and disparate impact.</p>
+        <h3>Findings</h3>
+        <p>Residual checks showed some correlation left at short lags, a sign that part of the daily pattern was still not captured by a single model.</p>
+        <h3>Next steps</h3>
+        <p>Combine the two levels: use the daily model for the baseline trend and the half-hourly model for short-term swings.</p>
+        <p class="tools">Python, statsmodels, pmdarima, scikit-learn</p>
+        <p class="code"><a href="https://github.com/yche9837/Portfolio/tree/main/solar-power-forecasting">Solar forecasting code</a> and <a href="https://github.com/yche9837/Portfolio/tree/main/wine-expenditure-prediction">spending model code</a></p>
+      </div>
+      <figure aria-labelledby="fc-fig">
+        <p class="fig-title" id="fc-fig">Three horizons, three forecasting problems</p>
+        <p class="fig-sub">Models were selected separately at each level and compared by mean absolute error</p>
+        <table class="htable">
+          <thead><tr><th scope="col">Horizon</th><th scope="col">Data</th><th scope="col">Approach</th></tr></thead>
+          <tbody>
+            <tr><td>Next 24 hours</td><td>Half-hourly</td><td>Manual and automatic model selection, point and interval forecasts</td></tr>
+            <tr><td>Next 7 days</td><td>Daily</td><td>Automatic model selection, point and interval forecasts</td></tr>
+            <tr><td>Next 12 months</td><td>Monthly</td><td>Automatic model selection, point and interval forecasts</td></tr>
+          </tbody>
+        </table>
+        <figcaption>A final comparison tested whether half-hourly or daily models gave better forecasts when brought to the same scale.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="case" id="liveability" aria-labelledby="lv-h">
+    <div class="wrap grid">
+      <div>
+        <h2 id="lv-h">Liveability of Sydney</h2>
+        <p class="meta">University of Sydney, 2022. Team lead, group of three, High Distinction.</p>
+        <p class="lead">A liveability score is only as good as the data model underneath it, so the work started with the database rather than the map.</p>
+        <h3>Approach</h3>
+        <p>We loaded public datasets into PostgreSQL with PostGIS, using a defined schema for businesses, transport stops, schools, polling places, population and income across Sydney's SA2 regions. We indexed the region boundaries spatially and calculated each metric with SQL spatial joins.</p>
+        <p>We then extended the score with three more sources in different formats: safety cameras from JSON, playgrounds as spatial data and rain gardens from CSV.</p>
+        <h3>Findings</h3>
+        <p>Liveability had only a weak positive relationship with median income (correlation 0.15), so higher-income areas were not reliably the most liveable by this measure.</p>
+        <h3>Next steps</h3>
+        <p>Test how sensitive the ranking is to the equal weights, and validate the score against an outside measure such as resident survey data.</p>
+        <p class="tools">SQL, PostgreSQL, PostGIS, Python, GeoPandas</p>
+        <p class="code"><a href="https://github.com/yche9837/Portfolio/tree/main/liveability-of-sydney-sql-postgis">Code and report</a></p>
+      </div>
+      <figure aria-labelledby="lv-fig">
+        <p class="fig-title" id="lv-fig">The extended score for each SA2 region</p>
+        <p class="fig-sub">Each term is the z-score of one metric, so all terms share a scale</p>
+        <div class="formula" role="img" aria-label="Score equals the sigmoid of z retail plus z health plus z stops plus z polls plus z schools, minus z safety cameras, plus z playgrounds plus z rain gardens.">
+          score = S( z<sub>retail</sub> <span class="op">+</span> z<sub>health</sub> <span class="op">+</span> z<sub>stops</sub> <span class="op">+</span> z<sub>polls</sub> <span class="op">+</span> z<sub>schools</sub><br>
+          &emsp;&emsp;&emsp; <span class="neg">− z<sub>safety cameras</sub></span> <span class="add">+ z<sub>playgrounds</sub> + z<sub>rain gardens</sub></span> )
+        </div>
+        <figcaption>S is the sigmoid function, which maps the sum to a score between 0 and 1. The second line holds the three datasets added in the extension. A higher density of safety cameras counts against a region.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="plain" id="experience" aria-labelledby="exp-h">
+    <div class="wrap">
+      <h2 id="exp-h">Experience</h2>
+      <ul class="jobs">
+        <li><div class="when">Mar 2026 to present</div><div><h3>Customer Banking Specialist</h3><p class="org">Commonwealth Bank of Australia, Sydney CBD</p><p>Serve personal and business customers. Top referrer in the branch for the quarter, with referrals to Business Banking, Home Lending and Private Banking, and recognised by the CBD region for home lending referrals.</p></div></li>
+        <li><div class="when">Nov 2025 to Feb 2026</div><div><h3>Web Developer Intern</h3><p class="org">Next Step Education</p><p>Built a full-stack education platform with role-based portals for 100+ users, designing the PostgreSQL schema and APIs with Prisma.</p></div></li>
+        <li><div class="when">Nov 2025 to Jan 2026</div><div><h3>Full-Stack Web Developer Intern</h3><p class="org">Snow Point Collectibles</p><p>Delivered an e-commerce platform with an order pipeline, online payments and an admin dashboard for revenue and inventory.</p></div></li>
+        <li><div class="when">Jun 2024 to Aug 2026</div><div><h3>Dyson Expert</h3><p class="org">Dyson Appliances Australia</p><p>Top salesperson at the Moore Park store, generating $900k in annual revenue, and 2nd among Dyson retail store employees in an APAC recognition program.</p></div></li>
+        <li><div class="when">Nov 2020 to Oct 2024</div><div><h3>Academic Tutor</h3><p class="org">Self-employed, OLA Tutoring and Art of Smart Education</p><p>Tutored HSC students to Band 5 and 6 results. Nominated for Coach of the Year.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="plain" id="about" aria-labelledby="about-h">
+    <div class="wrap about">
+      <div>
+        <h2 id="about-h">About</h2>
+        <p>I came to data science through commerce and computing, and I have spent years in client-facing roles, most recently in banking. That mix shapes how I work. I care about whether a model is right, and just as much about whether the person reading the result can trust it and act on it.</p>
+        <p>I am looking for graduate and early-career roles in data science, analytics and data engineering, particularly in the public sector and financial services.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Education</dt><dd>Master of Data Science, University of Sydney (2026 to present). Bachelor of Advanced Computing and Bachelor of Commerce, University of Sydney (2021 to 2025).</dd></div>
+        <div><dt>Certification</dt><dd>AWS Certified Cloud Practitioner (2026)</dd></div>
+        <div><dt>Tools</dt><dd>Python, SQL, PostgreSQL and PostGIS, R, scikit-learn, TensorFlow, statsmodels, Git, AWS</dd></div>
+        <div><dt>Languages</dt><dd>English and Mandarin</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <h2>Contact</h2>
+      <p>Fiona Chen, Sydney, NSW</p>
+    </div>
+    <p class="links">
+      <a href="mailto:fionachen0811@gmail.com">fionachen0811@gmail.com</a>
+      <a href="Fiona_Chen_Resume.pdf">Resume (PDF)</a>
+      <a href="https://github.com/yche9837/Portfolio">GitHub</a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
