@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiona Chen | Data Science</title>
+<meta name="description" content="Fiona (Yi Fei) Chen, Master of Data Science student at the University of Sydney. Data pipelines, machine learning and analytics, with financial-services experience at Commonwealth Bank.">
+<meta property="og:title" content="Fiona Chen | Data Science">
+<meta property="og:description" content="Data pipelines, machine learning and analytics, with financial-services experience.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+SC:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F7F6;
+    --surface: #FFFFFF;
+    --ink: #17212B;
+    --muted: #55606C;
+    --rule: #D5DCD8;
+    --accent: #23675A;
+    --accent-soft: #E2EEEA;
+    --measure: 68ch;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Public Sans", system-ui, sans-serif;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .5rem 1rem; }
+  .skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Header */
+  .site-head { border-bottom: 1px solid var(--rule); }
+  .site-head .wrap { display: flex; justify-content: space-between; align-items: center; height: 4rem; }
+  .wordmark { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
+  .site-head nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  .site-head nav a { color: var(--muted); text-decoration: none; font-size: .95rem; }
+  .site-head nav a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero { padding-top: 5.5rem; padding-bottom: 4.5rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: end; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.02; letter-spacing: -.035em; font-weight: 700; margin: 0 0 1.5rem;
+  }
+  .hero .lede { font-size: 1.25rem; line-height: 1.5; color: var(--muted); max-width: 34em; margin: 0 0 2rem; }
+  .hero .lede strong { color: var(--ink); font-weight: 600; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .btn {
+    display: inline-block; padding: .8rem 1.3rem; border-radius: 6px; font-weight: 600; font-size: .98rem;
+    text-decoration: none; border: 1.5px solid var(--accent);
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #1B5248; border-color: #1B5248; }
+  .btn-quiet { color: var(--accent); background: transparent; }
+  .btn-quiet:hover { background: var(--accent-soft); }
+  .hanzi {
+    font-family: "Noto Serif SC", serif; font-weight: 500;
+    writing-mode: vertical-rl; font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: 1;
+    color: var(--accent); letter-spacing: .08em; margin: 0; user-select: none;
+  }
+
+  /* Facts strip */
+  .facts { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--surface); }
+  .facts dl { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; }
+  .facts dl > div { padding: 1.4rem 1.5rem 1.4rem 0; }
+  .facts dl > div + div { padding-left: 1.5rem; border-left: 1px solid var(--rule); }
+  .facts dt { font-size: .88rem; color: var(--muted); margin-bottom: .2rem; }
+  .facts dd { margin: 0; font-weight: 600; line-height: 1.35; }
+
+  /* Sections */
+  section.block { padding: 5rem 0 1rem; }
+  .block > .wrap > h2 {
+    font-size: 1.85rem; letter-spacing: -.02em; margin: 0 0 .5rem; font-weight: 700;
+  }
+  .block .intro { color: var(--muted); max-width: var(--measure); margin: 0 0 2.5rem; }
+
+  /* Projects */
+  .project {
+    display: grid; grid-template-columns: 11rem 1fr; gap: 2rem;
+    padding: 2.25rem 0; border-top: 1px solid var(--rule);
+  }
+  .project:last-child { border-bottom: 1px solid var(--rule); }
+  .project .when { color: var(--muted); font-size: .95rem; }
+  .project .when strong { display: block; color: var(--ink); font-size: 1.05rem; }
+  .project h3 { font-size: 1.35rem; letter-spacing: -.015em; margin: 0 0 .35rem; line-height: 1.3; }
+  .project .context { color: var(--muted); margin: 0 0 1rem; }
+  .project .result {
+    display: inline-block; background: var(--accent-soft); color: #174A40;
+    font-weight: 600; font-size: .92rem; padding: .2rem .6rem; border-radius: 4px; margin-left: .4rem;
+  }
+  .project p { max-width: var(--measure); margin: 0 0 .9rem; }
+  .project .label { font-weight: 600; }
+  .project .tools { color: var(--muted); font-size: .95rem; margin-top: 1rem; }
+  .project .links { margin-top: .6rem; font-size: .95rem; }
+  .project .note { color: var(--muted); font-style: italic; }
+  .project.featured .body { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.75rem 2rem; }
+
+  /* Experience timeline */
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li { display: grid; grid-template-columns: 11rem 1fr; gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); }
+  .timeline .dates { color: var(--muted); font-size: .95rem; padding-top: .15rem; }
+  .timeline h3 { font-size: 1.12rem; margin: 0; }
+  .timeline .org { color: var(--muted); margin: 0 0 .5rem; }
+  .timeline p { margin: 0; max-width: var(--measure); }
+
+  /* Skills & education */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .skills { margin: 0; }
+  .skills div { padding: .9rem 0; border-top: 1px solid var(--rule); }
+  .skills dt { font-weight: 600; margin-bottom: .15rem; }
+  .skills dd { margin: 0; color: var(--muted); }
+  .edu { list-style: none; margin: 0; padding: 0; }
+  .edu li { padding: .9rem 0; border-top: 1px solid var(--rule); }
+  .edu strong { display: block; }
+  .edu span { color: var(--muted); }
+
+  /* Contact */
+  .contact { margin-top: 5rem; background: var(--ink); color: #E8EEEB; }
+  .contact .wrap { padding-top: 4rem; padding-bottom: 4rem; display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center; }
+  .contact h2 { color: #fff; font-size: 2rem; letter-spacing: -.02em; margin: 0 0 .75rem; }
+  .contact p { margin: 0; color: #BFC9C4; max-width: 36em; }
+  .contact .actions { justify-content: flex-start; }
+  .contact .btn-primary { background: #fff; color: var(--ink); border-color: #fff; }
+  .contact .btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+  .contact .btn-quiet { color: #fff; border-color: #6F807A; }
+  .contact .btn-quiet:hover { background: #22303B; }
+  .contact :focus-visible { outline-color: #9FD3C4; }
+  .site-foot { background: var(--ink); color: #8C9A94; font-size: .88rem; border-top: 1px solid #2A3844; }
+  .site-foot .wrap { padding-top: 1.25rem; padding-bottom: 1.5rem; }
+
+  @media (max-width: 820px) {
+    .site-head nav ul { gap: 1rem; }
+    .site-head nav li.hide-sm { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 3.5rem; padding-bottom: 3rem; gap: 1.5rem; }
+    .hanzi { writing-mode: horizontal-tb; order: -1; font-size: 2.6rem; }
+    .facts dl { grid-template-columns: 1fr 1fr; }
+    .facts dl > div, .facts dl > div + div { padding: 1.1rem 1rem 1.1rem 0; border-left: 0; }
+    .facts dl > div:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--rule); }
+    .facts dl > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+    .project, .timeline li { grid-template-columns: 1fr; gap: .5rem; }
+    .project.featured .body { padding: 1.25rem; }
+    .two-col, .contact .wrap { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hanzi { animation: settle 900ms cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes settle { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+  }
+  @media print {
+    .site-head nav, .actions, .contact .actions { display: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to projects</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="wordmark" href="#top">Fiona Chen</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li class="hide-sm"><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <h1>Fiona (Yi Fei) Chen</h1>
+      <p class="lede">I build <strong>reproducible data pipelines and machine learning models</strong>, and turn the results into recommendations people can act on. Master of Data Science student at the University of Sydney, working in banking at Commonwealth Bank.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="Fiona_Chen_Resume.pdf" download>Download resume (PDF)</a>
+        <a class="btn btn-quiet" href="mailto:fionachen0811@gmail.com">Email me</a>
+      </div>
+    </div>
+    <p class="hanzi" lang="zh-Hans" aria-label="Chen Yifei, my name in Chinese">陈依菲</p>
+  </div>
+
+  <div class="facts" aria-label="At a glance">
+    <div class="wrap">
+      <dl>
+        <div><dt>Studying</dt><dd>Master of Data Science, University of Sydney</dd></div>
+        <div><dt>Working</dt><dd>Customer Banking Specialist, CommBank</dd></div>
+        <div><dt>Certified</dt><dd>AWS Cloud Practitioner</dd></div>
+        <div><dt>Based in</dt><dd>Sydney, English and Mandarin</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="block" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 id="work-h">Selected projects</h2>
+      <p class="intro">Most recent first. Code is linked wherever it can be shared publicly.</p>
+
+      <article class="project featured">
+        <div class="when"><strong>2026</strong>COMP5310, pair project</div>
+        <div class="body">
+          <h3>Which hotel bookings will cancel? <span class="result">Mark 19.22/20</span></h3>
+          <p class="context">Hotel booking cancellation prediction for a revenue manager</p>
+          <p><span class="label">Problem.</span> More than a quarter of bookings ended in a cancellation or no-show, and late cancellations leave rooms empty that could have been resold.</p>
+          <p><span class="label">What I did.</span> Built the data pipeline that took about 120,000 raw bookings to 87,114 clean records, using chi-squared tests to decide how each column's missing values were handled and removing fields that would leak the outcome. Set up leakage-safe scikit-learn pipelines with stratified 10-fold cross-validation, tuned logistic regression and random forest models, and stress-tested the final model on later arrivals.</p>
+          <p><span class="label">Outcome.</span> A random forest that clearly beat the baselines, delivered as a decision report recommending a staff follow-up pilot, with honest limits on short-notice cancellations and the need for retraining.</p>
+          <p class="tools">Python, pandas, scikit-learn, statistical testing</p>
+          <p class="links note">Coursework repository is private. Code and report available on request.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="when"><strong>2025</strong>COMP4318, pair projects</div>
+        <div class="body">
+          <h3>Rice and image classification <span class="result">Full marks in both</span></h3>
+          <p class="context">Two machine learning assignments comparing classical models and neural networks</p>
+          <p>Compared nine classifiers on a rice dataset with stratified 10-fold cross-validation and grid search. The tuned random forest reached 93.7% test accuracy. For 40,000 images across 9 classes, a random forest on engineered features (edge density and pixel statistics) reached 72.3% accuracy and outperformed both an MLP and a CNN tuned with Keras Tuner.</p>
+          <p class="tools">Python, scikit-learn, TensorFlow, Keras Tuner, OpenCV</p>
+          <p class="links note">Coursework repositories are private. Available on request.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="when"><strong>2024</strong>Capstone with BIGW</div>
+        <div class="body">
+          <h3>A bundling strategy for price-sensitive shoppers</h3>
+          <p class="context">Selected as one of the top two groups to present to BIGW executives</p>
+          <p>Applied CRISP-DM to pair high-demand products with underperforming ones, using price elasticity and seasonality. Compared linear regression, ridge and random forest models, with PCA to handle multicollinearity, and forecast the sales uplift from the proposed bundles.</p>
+          <p class="tools">Python, scikit-learn, CRISP-DM</p>
+          <p class="links note">Confidential client project, so no code is published.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="when"><strong>2023</strong>Individual projects</div>
+        <div class="body">
+          <h3>Forecasting solar output and customer spending <span class="result">High Distinction</span></h3>
+          <p class="context">Time series forecasting and predictive modelling</p>
+          <p>Forecast household solar production for the next 24 hours, 7 days and 12 months, comparing naive, Holt-Winters, damped Holt and ARIMA models. Separately, predicted customer wine spending from 28 marketing variables and audited the final model for fairness using statistical parity and disparate impact.</p>
+          <p class="tools">Python, statsmodels, scikit-learn</p>
+          <p class="links"><a href="https://github.com/yche9837/Portfolio/tree/main/solar-power-forecasting">Solar forecasting code</a> &nbsp;&nbsp; <a href="https://github.com/yche9837/Portfolio/tree/main/wine-expenditure-prediction">Spending model code</a></p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="when"><strong>2022</strong>Team lead, 3 people</div>
+        <div class="body">
+          <h3>How liveable is each part of Sydney? <span class="result">High Distinction</span></h3>
+          <p class="context">Spatial database design and analysis</p>
+          <p>Designed a PostgreSQL/PostGIS schema of 10+ tables for business, transport, school, population and income data. Added spatial and attribute indexes, calculated liveability metrics with SQL spatial joins, and combined them into a standardised score for every SA2 region in Sydney.</p>
+          <p class="tools">SQL, PostgreSQL, PostGIS, Python, GeoPandas</p>
+          <p class="links"><a href="https://github.com/yche9837/Portfolio/tree/main/liveability-of-sydney-sql-postgis">View code and report</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="experience" aria-labelledby="exp-h">
+    <div class="wrap">
+      <h2 id="exp-h">Experience</h2>
+      <p class="intro">Technical work alongside client-facing roles in banking and retail.</p>
+      <ol class="timeline" reversed>
+        <li>
+          <div class="dates">Mar 2026 to present</div>
+          <div>
+            <h3>Customer Banking Specialist</h3>
+            <p class="org">Commonwealth Bank of Australia, Sydney CBD</p>
+            <p>Serve personal and business customers in a high-volume branch. Top referrer in the branch for the quarter, with referrals to Business Banking, Home Lending and Private Banking, and recognised by the CBD region for the value added through home lending referrals.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dates">Nov 2025 to Feb 2026</div>
+          <div>
+            <h3>Web Developer Intern</h3>
+            <p class="org">Next Step Education</p>
+            <p>Built a full-stack education platform (Next.js, PostgreSQL, Prisma) with role-based portals for 100+ students, parents and administrators, progress-tracking dashboards and English/Chinese language support.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dates">Nov 2025 to Jan 2026</div>
+          <div>
+            <h3>Full-Stack Web Developer Intern</h3>
+            <p class="org">Snow Point Collectibles</p>
+            <p>Delivered an e-commerce platform with an order pipeline from cart to fulfilment, Square and PayPal payments, live shipping quotes and an admin dashboard for revenue and inventory.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dates">Jun 2024 to Aug 2026</div>
+          <div>
+            <h3>Dyson Expert</h3>
+            <p class="org">Dyson Appliances Australia</p>
+            <p>Top salesperson at the Moore Park demo store, generating $900k in annual revenue, and 2nd among all Dyson retail store employees in an APAC recognition program.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dates">Nov 2020 to Oct 2024</div>
+          <div>
+            <h3>Academic Tutor</h3>
+            <p class="org">Self-employed, OLA Tutoring and Art of Smart Education</p>
+            <p>Tutored Year 11 and 12 students in Economics, EAL/D, Biology and Mathematics to Band 5 and 6 HSC results. Nominated for Coach of the Year (1-on-1 Tutoring).</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="skills" aria-labelledby="skills-h">
+    <div class="wrap two-col">
+      <div>
+        <h2 id="skills-h">Skills</h2>
+        <dl class="skills">
+          <div><dt>Programming</dt><dd>Python (pandas, scikit-learn, statsmodels), SQL (PostgreSQL, PostGIS), R, Java</dd></div>
+          <div><dt>Data</dt><dd>Data pipelines, data modelling, machine learning, time series forecasting, visualisation</dd></div>
+          <div><dt>Tools and cloud</dt><dd>AWS, Git, Jupyter, Jira, Jenkins, Next.js, Prisma, SAP CRM</dd></div>
+          <div><dt>Languages</dt><dd>English and Mandarin</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2>Education</h2>
+        <ul class="edu">
+          <li><strong>Master of Data Science</strong><span>University of Sydney, 2026 to present</span></li>
+          <li><strong>Bachelor of Advanced Computing (Data Science) and Bachelor of Commerce (Business Analytics)</strong><span>University of Sydney, 2021 to 2025</span></li>
+          <li><strong>AWS Certified Cloud Practitioner</strong><span>Amazon Web Services, January 2026</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div>
+      <h2 id="contact-h">Let's talk</h2>
+      <p>I'm looking for graduate and early-career roles in data science and analytics, especially in the public sector and financial services.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:fionachen0811@gmail.com">fionachen0811@gmail.com</a>
+      <a class="btn btn-quiet" href="Fiona_Chen_Resume.pdf" download>Download resume</a>
+    </div>
+  </div>
+</section>
+<footer class="site-foot">
+  <div class="wrap">Fiona Chen, Sydney. Public code samples on <a href="https://github.com/yche9837/Portfolio" style="color:#BFC9C4">GitHub</a>.</div>
+</footer>
+</body>
+</html>
