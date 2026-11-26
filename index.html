@@ -10,7 +10,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+SC:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #F5F7F6;
@@ -47,7 +47,7 @@
   .site-head nav a:hover { color: var(--ink); }
 
   /* Hero */
-  .hero { padding-top: 5.5rem; padding-bottom: 4.5rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: end; }
+  .hero { padding-top: 5.5rem; padding-bottom: 4.5rem; }
   .hero h1 {
     font-size: clamp(2.6rem, 6vw, 4.4rem);
     line-height: 1.02; letter-spacing: -.035em; font-weight: 700; margin: 0 0 1.5rem;
@@ -63,11 +63,6 @@
   .btn-primary:hover { background: #1B5248; border-color: #1B5248; }
   .btn-quiet { color: var(--accent); background: transparent; }
   .btn-quiet:hover { background: var(--accent-soft); }
-  .hanzi {
-    font-family: "Noto Serif SC", serif; font-weight: 500;
-    writing-mode: vertical-rl; font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: 1;
-    color: var(--accent); letter-spacing: .08em; margin: 0; user-select: none;
-  }
 
   /* Facts strip */
   .facts { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--surface); }
@@ -142,24 +137,7 @@
     .site-head nav ul { gap: 1rem; }
     .site-head nav li.hide-sm { display: none; }
     .hero { grid-template-columns: 1fr; padding-top: 3.5rem; padding-bottom: 3rem; gap: 1.5rem; }
-    .hanzi { writing-mode: horizontal-tb; order: -1; font-size: 2.6rem; }
-    .facts dl { grid-template-columns: 1fr 1fr; }
-    .facts dl > div, .facts dl > div + div { padding: 1.1rem 1rem 1.1rem 0; border-left: 0; }
-    .facts dl > div:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--rule); }
-    .facts dl > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
-    .project, .timeline li { grid-template-columns: 1fr; gap: .5rem; }
-    .project.featured .body { padding: 1.25rem; }
-    .two-col, .contact .wrap { grid-template-columns: 1fr; gap: 2rem; }
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .hanzi { animation: settle 900ms cubic-bezier(.2,.7,.2,1) both; }
-    @keyframes settle { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
-  }
-  @media print {
-    .site-head nav, .actions, .contact .actions { display: none; }
-    body { background: #fff; }
-  }
-</style>
+  </style>
 </head>
 <body>
 <a class="skip" href="#work">Skip to projects</a>
@@ -188,7 +166,6 @@
         <a class="btn btn-quiet" href="mailto:fionachen0811@gmail.com">Email me</a>
       </div>
     </div>
-    <p class="hanzi" lang="zh-Hans" aria-label="Chen Yifei, my name in Chinese">陈依菲</p>
   </div>
 
   <div class="facts" aria-label="At a glance">
