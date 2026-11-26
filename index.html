@@ -57,7 +57,7 @@
   .hero .lede strong { color: var(--ink); font-weight: 600; }
   .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
   .btn {
-    display: inline-block; padding: .8rem 1.3rem; border-radius: 6px; font-weight: 600; font-size: .98rem;
+    display: inline-block; padding: .75rem 1.2rem; border-radius: 3px; font-weight: 600; font-size: .98rem;
     text-decoration: none; border: 1.5px solid var(--accent);
   }
   .btn-primary { background: var(--accent); color: #fff; }
@@ -90,16 +90,12 @@
   .project .when strong { display: block; color: var(--ink); font-size: 1.05rem; }
   .project h3 { font-size: 1.35rem; letter-spacing: -.015em; margin: 0 0 .35rem; line-height: 1.3; }
   .project .context { color: var(--muted); margin: 0 0 1rem; }
-  .project .result {
-    display: inline-block; background: var(--accent-soft); color: #174A40;
-    font-weight: 600; font-size: .92rem; padding: .2rem .6rem; border-radius: 4px; margin-left: .4rem;
-  }
+  .project .result { display: block; font-size: .95rem; font-weight: 400; color: var(--muted); margin-top: .15rem; }
   .project p { max-width: var(--measure); margin: 0 0 .9rem; }
   .project .label { font-weight: 600; }
   .project .tools { color: var(--muted); font-size: .95rem; margin-top: 1rem; }
   .project .links { margin-top: .6rem; font-size: .95rem; }
-  .project .note { color: var(--muted); font-style: italic; }
-  .project.featured .body { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.75rem 2rem; }
+  .project .note { color: var(--muted); }
 
   /* Experience timeline */
   .timeline { list-style: none; margin: 0; padding: 0; }
@@ -143,7 +139,6 @@
     .facts dl > div:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--rule); }
     .facts dl > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
     .project, .timeline li { grid-template-columns: 1fr; gap: .5rem; }
-    .project.featured .body { padding: 1.25rem; }
     .two-col, .contact .wrap { grid-template-columns: 1fr; gap: 2rem; }
   }
   @media print {
@@ -205,7 +200,7 @@
   <div class="wrap hero">
     <div>
       <h1>Fiona (Yi Fei) Chen</h1>
-      <p class="lede">I build <strong>reproducible data pipelines and machine learning models</strong>, and turn the results into recommendations people can act on. Master of Data Science student at the University of Sydney, working in banking at Commonwealth Bank.</p>
+      <p class="lede">I build reproducible data pipelines and machine learning models, and turn the results into recommendations people can act on. Master of Data Science student at the University of Sydney, working in banking at Commonwealth Bank.</p>
       <p class="print-only">Sydney, NSW &nbsp;|&nbsp; fionachen0811@gmail.com &nbsp;|&nbsp; yche9837.github.io/fiona-ds-ba.github.io</p>
       <div class="actions">
         <a class="btn btn-primary" href="Fiona_Chen_Resume.pdf" download>Download resume (PDF)</a>
@@ -233,11 +228,11 @@
       <article class="project featured">
         <div class="when"><strong>2026</strong>COMP5310, pair project</div>
         <div class="body">
-          <h3>Which hotel bookings will cancel? <span class="result">Mark 19.22/20</span></h3>
-          <p class="context">Hotel booking cancellation prediction for a revenue manager</p>
-          <p><span class="label">Problem.</span> More than a quarter of bookings ended in a cancellation or no-show, and late cancellations leave rooms empty that could have been resold.</p>
-          <p><span class="label">What I did.</span> Built the data pipeline that took about 120,000 raw bookings to 87,114 clean records, using chi-squared tests to decide how each column's missing values were handled and removing fields that would leak the outcome. Set up leakage-safe scikit-learn pipelines with stratified 10-fold cross-validation, tuned logistic regression and random forest models, and stress-tested the final model on later arrivals.</p>
-          <p><span class="label">Outcome.</span> A random forest that clearly beat the baselines, delivered as a decision report recommending a staff follow-up pilot, with honest limits on short-notice cancellations and the need for retraining.</p>
+          <h3>Hotel Booking Cancellation Prediction <span class="result">Mark 19.22/20</span></h3>
+          <p class="context">Predicting cancellations so a revenue manager can follow up with at-risk guests</p>
+          <p><span class="label">Objective:</span> More than a quarter of bookings ended in a cancellation or no-show, and late cancellations leave rooms empty that could have been resold.</p>
+          <p><span class="label">Approach:</span> Built the data pipeline that took about 120,000 raw bookings to 87,114 clean records, using chi-squared tests to decide how each column's missing values were handled and removing fields that would leak the outcome. Set up leakage-safe scikit-learn pipelines with stratified 10-fold cross-validation, tuned logistic regression and random forest models, and stress-tested the final model on later arrivals.</p>
+          <p><span class="label">Outcome:</span> A random forest that clearly beat the baselines, delivered as a decision report recommending a staff follow-up pilot, with honest limits on short-notice cancellations and the need for retraining.</p>
           <p class="tools">Python, pandas, scikit-learn, statistical testing</p>
           <p class="links note">Coursework repository is private. Code and report available on request.</p>
         </div>
@@ -246,7 +241,7 @@
       <article class="project">
         <div class="when"><strong>2025</strong>COMP4318, pair projects</div>
         <div class="body">
-          <h3>Rice and image classification <span class="result">Full marks in both</span></h3>
+          <h3>Rice and Image Classification <span class="result">Full marks in both</span></h3>
           <p class="context">Two machine learning assignments comparing classical models and neural networks</p>
           <p>Compared nine classifiers on a rice dataset with stratified 10-fold cross-validation and grid search. The tuned random forest reached 93.7% test accuracy. For 40,000 images across 9 classes, a random forest on engineered features (edge density and pixel statistics) reached 72.3% accuracy and outperformed both an MLP and a CNN tuned with Keras Tuner.</p>
           <p class="tools">Python, scikit-learn, TensorFlow, Keras Tuner, OpenCV</p>
@@ -257,7 +252,7 @@
       <article class="project">
         <div class="when"><strong>2024</strong>Capstone with BIGW</div>
         <div class="body">
-          <h3>A bundling strategy for price-sensitive shoppers</h3>
+          <h3>Product Bundling Strategy for BIGW</h3>
           <p class="context">Selected as one of the top two groups to present to BIGW executives</p>
           <p>Applied CRISP-DM to pair high-demand products with underperforming ones, using price elasticity and seasonality. Compared linear regression, ridge and random forest models, with PCA to handle multicollinearity, and forecast the sales uplift from the proposed bundles.</p>
           <p class="tools">Python, scikit-learn, CRISP-DM</p>
@@ -268,7 +263,7 @@
       <article class="project">
         <div class="when"><strong>2023</strong>Individual projects</div>
         <div class="body">
-          <h3>Forecasting solar output and customer spending <span class="result">High Distinction</span></h3>
+          <h3>Solar Forecasting and Customer Spending Prediction <span class="result">High Distinction</span></h3>
           <p class="context">Time series forecasting and predictive modelling</p>
           <p>Forecast household solar production for the next 24 hours, 7 days and 12 months, comparing naive, Holt-Winters, damped Holt and ARIMA models. Separately, predicted customer wine spending from 28 marketing variables and audited the final model for fairness using statistical parity and disparate impact.</p>
           <p class="tools">Python, statsmodels, scikit-learn</p>
@@ -279,7 +274,7 @@
       <article class="project">
         <div class="when"><strong>2022</strong>Team lead, 3 people</div>
         <div class="body">
-          <h3>How liveable is each part of Sydney? <span class="result">High Distinction</span></h3>
+          <h3>Spatial Analysis of the Liveability of Sydney <span class="result">High Distinction</span></h3>
           <p class="context">Spatial database design and analysis</p>
           <p>Designed a PostgreSQL/PostGIS schema of 10+ tables for business, transport, school, population and income data. Added spatial and attribute indexes, calculated liveability metrics with SQL spatial joins, and combined them into a standardised score for every SA2 region in Sydney.</p>
           <p class="tools">SQL, PostgreSQL, PostGIS, Python, GeoPandas</p>
@@ -364,7 +359,7 @@
 <section class="contact" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
     <div>
-      <h2 id="contact-h">Let's talk</h2>
+      <h2 id="contact-h">Contact</h2>
       <p>I'm looking for graduate and early-career roles in data science and analytics, especially in the public sector and financial services.</p>
     </div>
     <div class="actions">
