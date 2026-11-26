@@ -33,6 +33,7 @@
   a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
   a:hover { text-decoration-thickness: 2px; }
   :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .print-only { display: none; }
   .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .5rem 1rem; }
   .skip:focus { left: 1rem; top: 1rem; z-index: 10; }
 
@@ -133,7 +134,7 @@
   .site-foot { background: var(--ink); color: #8C9A94; font-size: .88rem; border-top: 1px solid #2A3844; }
   .site-foot .wrap { padding-top: 1.25rem; padding-bottom: 1.5rem; }
 
-  @media (max-width: 820px) {
+  @media screen and (max-width: 820px) {
     .site-head nav ul { gap: 1rem; }
     .site-head nav li.hide-sm { display: none; }
     .hero { padding-top: 3.5rem; padding-bottom: 3rem; }
@@ -146,8 +147,40 @@
     .two-col, .contact .wrap { grid-template-columns: 1fr; gap: 2rem; }
   }
   @media print {
-    .site-head nav, .actions, .contact .actions { display: none; }
-    body { background: #fff; }
+    @page { size: A4; margin: 14mm 12mm; }
+    body { background: #fff; font-size: 11pt; }
+    .skip, .site-head, .hero .actions, #experience, .contact, .site-foot { display: none; }
+    .print-only { display: block; color: var(--muted); margin: .6rem 0 0; }
+    .project.featured .body { border: 0; padding: 0; background: none; }
+    .project { break-inside: auto; }
+    .project h3, .project .context { break-after: avoid; }
+    .project p { orphans: 3; widows: 3; }
+    .wrap { padding: 0; max-width: none; }
+    .project { grid-template-columns: 8rem 1fr; gap: 1.25rem; }
+    .facts div { padding-top: .8rem; padding-bottom: .8rem; }
+    .hero .lede { max-width: none; }
+    .site-head { border: 0; }
+    .site-head .wrap { height: auto; padding-top: 0; }
+    .hero { padding-top: 0; padding-bottom: 1rem; }
+    .hero h1 { font-size: 30pt; margin-bottom: .75rem; }
+    .hero .lede { font-size: 12pt; margin-bottom: 0; }
+    section.block { padding-top: 1.25rem; }
+    .project, .timeline li { break-inside: avoid; padding: .9rem 0; }
+    .project p { margin-bottom: .5rem; }
+    .project .tools { margin-top: .5rem; }
+    .project .links { margin-top: .2rem; }
+    .block .intro { margin-bottom: 1rem; }
+    .project .context { margin-bottom: .5rem; }
+    .block > .wrap > h2 { break-after: avoid; }
+    .contact, .site-foot { background: #fff; color: var(--ink); margin-top: 2rem; }
+    .contact { border-top: 2px solid var(--accent); break-inside: avoid; }
+    .contact .wrap { padding-top: 1.5rem; padding-bottom: 1rem; }
+    .contact h2 { color: var(--ink); }
+    .contact p { color: var(--muted); }
+    .contact .btn-primary { background: none; border: 0; padding: 0; color: var(--accent); }
+    .site-foot { border-top: 0; color: var(--muted); }
+    .site-foot a { color: var(--accent) !important; }
+    .project.featured .body { border-color: var(--rule); }
   }
 </style>
 </head>
@@ -173,6 +206,7 @@
     <div>
       <h1>Fiona (Yi Fei) Chen</h1>
       <p class="lede">I build <strong>reproducible data pipelines and machine learning models</strong>, and turn the results into recommendations people can act on. Master of Data Science student at the University of Sydney, working in banking at Commonwealth Bank.</p>
+      <p class="print-only">Sydney, NSW &nbsp;|&nbsp; fionachen0811@gmail.com &nbsp;|&nbsp; yche9837.github.io/fiona-ds-ba.github.io</p>
       <div class="actions">
         <a class="btn btn-primary" href="Fiona_Chen_Resume.pdf" download>Download resume (PDF)</a>
         <a class="btn btn-quiet" href="mailto:fionachen0811@gmail.com">Email me</a>
@@ -194,7 +228,7 @@
   <section class="block" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <h2 id="work-h">Selected projects</h2>
-      <p class="intro">Most recent first. Code is linked wherever it can be shared publicly.</p>
+      <p class="intro">Most recent first. Code is linked wherever it can be shared publicly. Full site: <a href="https://yche9837.github.io/fiona-ds-ba.github.io/">yche9837.github.io/fiona-ds-ba.github.io</a>.</p>
 
       <article class="project featured">
         <div class="when"><strong>2026</strong>COMP5310, pair project</div>
