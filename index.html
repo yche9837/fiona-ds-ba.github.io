@@ -167,8 +167,8 @@
 
 <main id="top">
   <div class="wrap opening">
-    <h1>Good models start with honest data and end with a decision someone can act on.</h1>
-    <p class="who"><b>Fiona (Yi Fei) Chen.</b> Master of Data Science student at the University of Sydney, currently in banking at Commonwealth Bank. I build reproducible pipelines in Python and SQL, test models the way they will actually be used, and write up results for the people who rely on them.</p>
+    <h1>Fiona (Yi Fei) Chen</h1>
+    <p class="who">Master of Data Science student at the University of Sydney, currently working in banking at Commonwealth Bank. Below are case studies in data pipelines, machine learning, forecasting and spatial SQL, each written up the way it would be presented to the people using the results.</p>
     <p class="links">
       <a href="mailto:fionachen0811@gmail.com">fionachen0811@gmail.com</a>
       <a href="Fiona_Chen_Resume.pdf">Resume (PDF)</a>
@@ -196,12 +196,12 @@
         <h2 id="hotel-h">Hotel booking cancellations</h2>
         <p class="meta">COMP5310, University of Sydney, 2026. Pair assignment, mark 19.22/20.</p>
         <p class="lead">More than a quarter of bookings in the data ended in a cancellation or a no-show. A late cancellation leaves a room empty that could have been resold.</p>
-        <h3>What I did</h3>
-        <p>I built the data pipeline and the modelling notebook. Before touching a model, I tested whether missing values were linked to cancellation, rather than dropping or filling them by habit. Missing country, for example, marked a very different group of bookings, so it became its own category.</p>
+        <h3>Approach</h3>
+        <p>We built the data pipeline and models in Python. Before training any model, we tested whether missing values were linked to cancellation, rather than dropping or filling them by habit. Missing country, for example, marked a very different group of bookings, so it became its own category.</p>
         <p>Every field only known after the outcome, such as the final reservation status and the assigned room, was removed. Feature selection ran inside each cross-validation fold, so the scores were never flattered by information from the validation data.</p>
-        <h3>What I found</h3>
+        <h3>Findings</h3>
         <p>A tuned random forest clearly beat logistic regression and both baselines. It still missed most short-notice cancellations, and it did worse when trained on earlier arrivals and tested on a later year. So the recommendation was a staff follow-up pilot, used for decision support and never for automatic changes to reservations.</p>
-        <h3>What I would do next</h3>
+        <h3>Next steps</h3>
         <p>Set the follow-up threshold from the real cost of a wasted call against an empty room, calibrate the scores so staff can read them as probabilities, and monitor performance month by month.</p>
         <p class="tools">Python, pandas, scikit-learn, chi-squared tests</p>
         <p class="code">Coursework repository is private. Code and report available on request.</p>
@@ -225,12 +225,12 @@
         <h2 id="cls-h">Rice and image classification</h2>
         <p class="meta">COMP4318, University of Sydney, 2025. Two pair assignments, full marks in both.</p>
         <p class="lead">Eight hand-built features beat a tuned convolutional neural network on small images. The same random forest on raw pixels did far worse.</p>
-        <h3>What I did</h3>
-        <p>For 40,000 images across 9 classes, I converted the images to greyscale and engineered eight features per image, including pixel statistics and edge density. I compared a random forest on those features with a random forest on raw pixels, an MLP and a CNN, the last two tuned with Keras Tuner.</p>
-        <p>In an earlier assignment, I compared nine classifiers on a rice dataset using stratified 10-fold cross-validation and grid search.</p>
-        <h3>What I found</h3>
+        <h3>Approach</h3>
+        <p>For 40,000 images across 9 classes, we converted the images to greyscale and engineered eight features per image, including pixel statistics and edge density. We compared a random forest on those features with a random forest on raw pixels, an MLP and a CNN, the last two tuned with Keras Tuner.</p>
+        <p>In an earlier assignment, we compared nine classifiers on a rice dataset using stratified 10-fold cross-validation and grid search.</p>
+        <h3>Findings</h3>
         <p>On 28×28 images, good features mattered more than model complexity. On the rice data, all nine models landed within three points of each other in cross-validation, so careful validation mattered more than the choice of model. The tuned random forest reached 93.7% on the test set.</p>
-        <h3>What I would do next</h3>
+        <h3>Next steps</h3>
         <p>Try data augmentation and a pretrained network for the images, and study which classes are confused with each other before adding complexity.</p>
         <p class="tools">Python, scikit-learn, TensorFlow, Keras Tuner, OpenCV</p>
         <p class="code">Coursework repositories are private. Available on request.</p>
@@ -273,11 +273,11 @@
         <h2 id="bigw-h">BIGW product bundling</h2>
         <p class="meta">Capstone project with BIGW, 2024. Group project, selected as one of the top two groups to present to BIGW executives.</p>
         <p class="lead">BIGW's core customers were becoming more price-sensitive under economic pressure. The question was how to lift sales units without simply cutting prices.</p>
-        <h3>What I did</h3>
-        <p>Working through CRISP-DM, our team explored what drives sales units, then paired high-demand products with underperforming ones using price elasticity and seasonality. I contributed to the exploratory analysis and modelling, comparing linear regression, ridge and random forest models, with PCA to deal with highly correlated predictors.</p>
-        <h3>What I found</h3>
+        <h3>Approach</h3>
+        <p>Working through CRISP-DM, our team explored what drives sales units, then paired high-demand products with underperforming ones using price elasticity and seasonality. We compared linear regression, ridge and random forest models, with PCA to deal with highly correlated predictors.</p>
+        <h3>Findings</h3>
         <p>The random forest predicted sales units best, which let us forecast the sales and profit uplift from the proposed bundles and present the case to BIGW executives.</p>
-        <h3>What I would do next</h3>
+        <h3>Next steps</h3>
         <p>Trial the strongest bundles in a subset of stores against matched control stores, so the uplift is measured rather than only forecast.</p>
         <p class="tools">Python, scikit-learn, CRISP-DM</p>
         <p class="code">Confidential client project, so no code is published.</p>
@@ -301,12 +301,12 @@
         <h2 id="fc-h">Solar forecasting and spending prediction</h2>
         <p class="meta">QBUS2820, University of Sydney, 2023. Two individual assignments, High Distinction in both.</p>
         <p class="lead">A forecast that works for the next hour can fail for next month. Each horizon needed its own aggregation, model selection and evaluation.</p>
-        <h3>What I did</h3>
+        <h3>Approach</h3>
         <p>I aggregated half-hourly household solar data to daily and monthly series, studied trend and seasonality at each level, and compared benchmarks such as the seasonal random walk with Holt-Winters, damped Holt and ARIMA models, using time-ordered training, validation and test splits. I produced interval forecasts as well as point forecasts.</p>
         <p>In a second project, I predicted customer spending on wine from 28 marketing variables and audited the final model for fairness using statistical parity and disparate impact.</p>
-        <h3>What I found</h3>
+        <h3>Findings</h3>
         <p>Residual checks showed some correlation left at short lags, a sign that part of the daily pattern was still not captured by a single model.</p>
-        <h3>What I would do next</h3>
+        <h3>Next steps</h3>
         <p>Combine the two levels: use the daily model for the baseline trend and the half-hourly model for short-term swings.</p>
         <p class="tools">Python, statsmodels, pmdarima, scikit-learn</p>
         <p class="code"><a href="https://github.com/yche9837/Portfolio/tree/main/solar-power-forecasting">Solar forecasting code</a> and <a href="https://github.com/yche9837/Portfolio/tree/main/wine-expenditure-prediction">spending model code</a></p>
@@ -333,12 +333,12 @@
         <h2 id="lv-h">Liveability of Sydney</h2>
         <p class="meta">University of Sydney, 2022. Team lead, group of three, High Distinction.</p>
         <p class="lead">A liveability score is only as good as the data model underneath it, so the work started with the database rather than the map.</p>
-        <h3>What I did</h3>
-        <p>I led a team of three to load public datasets into PostgreSQL with PostGIS, using a defined schema for businesses, transport stops, schools, polling places, population and income across Sydney's SA2 regions. We indexed the region boundaries spatially and calculated each metric with SQL spatial joins.</p>
+        <h3>Approach</h3>
+        <p>We loaded public datasets into PostgreSQL with PostGIS, using a defined schema for businesses, transport stops, schools, polling places, population and income across Sydney's SA2 regions. We indexed the region boundaries spatially and calculated each metric with SQL spatial joins.</p>
         <p>We then extended the score with three more sources in different formats: safety cameras from JSON, playgrounds as spatial data and rain gardens from CSV.</p>
-        <h3>What I found</h3>
+        <h3>Findings</h3>
         <p>Liveability had only a weak positive relationship with median income (correlation 0.15), so higher-income areas were not reliably the most liveable by this measure.</p>
-        <h3>What I would do next</h3>
+        <h3>Next steps</h3>
         <p>Test how sensitive the ranking is to the equal weights, and validate the score against an outside measure such as resident survey data.</p>
         <p class="tools">SQL, PostgreSQL, PostGIS, Python, GeoPandas</p>
         <p class="code"><a href="https://github.com/yche9837/Portfolio/tree/main/liveability-of-sydney-sql-postgis">Code and report</a></p>
@@ -388,8 +388,8 @@
 <footer class="site-foot">
   <div class="wrap">
     <div>
-      <h2>Have a dataset and a decision to make? I would like to hear about it.</h2>
-      <p>Fiona Chen, Sydney</p>
+      <h2>Contact</h2>
+      <p>Fiona Chen, Sydney, NSW</p>
     </div>
     <p class="links">
       <a href="mailto:fionachen0811@gmail.com">fionachen0811@gmail.com</a>
